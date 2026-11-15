@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Engine oil + oil filter", "group_code": "B", "section_code": "LU",
+    "interval_km": 5000, "interval_months": 12,
+    "severe_km": 5000, "severe_months": null,
+    "seed_km": 15000, "seed_months": 12,
+    "seed_source": "Nissan Japan FAQ 9032: 15,000 km or 12 months with oil temp below 110°C; 5,000 km at 110–130°C; change straight after driving above 130°C",
+    "seed_source_url": "https://faq2.nissan.co.jp/faq/show/9032",
+    "spec": "Mobil 1 0W-40, API SM (factory). Owner now runs Motul 300V 5W-40.", "capacity_l": 5.5,
+    "notes": "Owner override 5,000 km / 12 months (confirmed by owner 2026-11-15; sheet entry #4 had 3,000 km, Dashboard implied 5,000 km). Also in MA. Above 130°C oil temp: change straight away."
+  },
+  {
+    "name": "Transmission oil (GR6)", "group_code": "D", "section_code": "TM",
+    "interval_km": 30000, "interval_months": null,
+    "severe_km": 5000, "severe_months": null,
+    "seed_km": 30000, "seed_months": null,
+    "seed_source": "30,000 km for JDM cars; Nissan later extended this to 60,000 km in Japan if oil stays below 110°C, and 5,000 km at 110–140°C (CarAdvice)",
+    "seed_source_url": "https://www.caradvice.com.au/news/nissan-loosens-grip-on-gt-r-servicing/",
+    "spec": "Nissan R35 Special transmission oil (FAQ 9034). Owner uses Motul DCTF.", "capacity_l": 9.7,
+    "notes": "Sheet entry #21 sets a +500 km post-service check."
+  },
+  {
+    "name": "Front + rear differential oil", "group_code": "D", "section_code": "DLN",
+    "interval_km": 60000, "interval_months": null,
+    "severe_km": 5000, "severe_months": null,
+    "seed_km": 30000, "seed_months": null,
+    "seed_source": "Same as transmission oil (CarAdvice)",
+    "seed_source_url": "https://www.caradvice.com.au/news/nissan-loosens-grip-on-gt-r-servicing/",
+    "spec": "75W-140 API GL-5 (FAQ 9034). Front about 0.65 L, rear about 1.55 L.", "capacity_l": 2.2,
+    "notes": "Owner override 60,000 km from sheet entry #34."
+  },
+  {
+    "name": "Brake fluid", "group_code": "F", "section_code": "BR",
+    "interval_km": 20000, "interval_months": null,
+    "severe_km": null, "severe_months": null,
+    "seed_km": null, "seed_months": null,
+    "seed_source": "No JDM interval found", "seed_source_url": "https://faq2.nissan.co.jp/faq/show/9034",
+    "spec": "Nissan Brake Fluid R35 Special, DOT4 (FAQ 9034)", "capacity_l": null,
+    "notes": "Owner override 20,000 km from sheet entry #7. Months still to set from ESM MA."
+  },
+  {
+    "name": "Engine coolant", "group_code": "B", "section_code": "CO",
+    "interval_km": null, "interval_months": null, "severe_km": null, "severe_months": null,
+    "seed_km": null, "seed_months": null,
+    "seed_source": "No verified JDM interval; set from ESM section MA", "seed_source_url": "https://faq2.nissan.co.jp/faq/show/9034",
+    "spec": "Nissan Long Life Coolant, about 11.0 L including reservoir (FAQ 9034)", "capacity_l": 11.0, "notes": ""
+  },
+  {
+    "name": "Spark plugs", "group_code": "B", "section_code": "EM",
+    "interval_km": null, "interval_months": null, "severe_km": null, "severe_months": null,
+    "seed_km": null, "seed_months": null,
+    "seed_source": "No interval; replace any plug whose gap reaches 1.0 mm (Nissan South Africa schedule)",
+    "seed_source_url": "https://www.nissan.co.za/content/dam/Nissan/za/Maintenance/GTR.pdf",
+    "spec": "Iridium (factory)", "capacity_l": null,
+    "notes": "NGK Racing heat range 8 fitted 2026-05-27 (sheet entry #22)."
+  },
+  {
+    "name": "Air cleaner filter", "group_code": "B", "section_code": "EM",
+    "interval_km": null, "interval_months": null, "severe_km": null, "severe_months": null,
+    "seed_km": null, "seed_months": null, "seed_source": "No verified JDM interval; set from ESM section MA", "seed_source_url": "",
+    "spec": "", "capacity_l": null, "notes": "Also in MA."
+  },
+  {
+    "name": "Air con filter", "group_code": "I", "section_code": "VTL",
+    "interval_km": null, "interval_months": null, "severe_km": null, "severe_months": null,
+    "seed_km": null, "seed_months": null, "seed_source": "No verified JDM interval; set from ESM section MA", "seed_source_url": "",
+    "spec": "", "capacity_l": null, "notes": ""
+  },
+  {
+    "name": "Brake hoses (inspect)", "group_code": "F", "section_code": "BR",
+    "interval_km": null, "interval_months": null, "severe_km": null, "severe_months": null,
+    "seed_km": null, "seed_months": null, "seed_source": "No verified JDM interval; set from ESM section MA", "seed_source_url": "",
+    "spec": "", "capacity_l": null, "notes": "Open item #46 in the sheet."
+  },
+  {
+    "name": "Power steering fluid", "group_code": "G", "section_code": "ST",
+    "interval_km": null, "interval_months": null, "severe_km": null, "severe_months": null,
+    "seed_km": null, "seed_months": null, "seed_source": "No verified JDM interval; set from ESM section MA", "seed_source_url": "https://faq2.nissan.co.jp/faq/show/9034",
+    "spec": "Nissan PSF, about 1.1 L (FAQ 9034)", "capacity_l": 1.1, "notes": ""
+  },
+  {
+    "name": "Transmission settings, clutch and shift fork inspection", "group_code": "D", "section_code": "TM",
+    "interval_km": null, "interval_months": null, "severe_km": null, "severe_months": null,
+    "seed_km": null, "seed_months": null, "seed_source": "No interval; Nissan lists this as a GT-R special inspection", "seed_source_url": "",
+    "spec": "", "capacity_l": null, "notes": ""
+  },
+  {
+    "name": "Wheel alignment", "group_code": "E", "section_code": "FSU",
+    "interval_km": null, "interval_months": null, "severe_km": null, "severe_months": null,
+    "seed_km": null, "seed_months": null, "seed_source": "No verified JDM interval; set from ESM section MA", "seed_source_url": "",
+    "spec": "", "capacity_l": null, "notes": "Covers FSU and RSU."
+  }
+]

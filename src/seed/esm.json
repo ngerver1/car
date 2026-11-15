@@ -1,0 +1,46 @@
+{
+  "source": "ESM SM13E00-1R35E0E",
+  "source_note": "Quick Reference Index of Nissan ESM publication SM13E00-1R35E0E (R35 series, © 2013 Nissan International SA), supplied by the owner. Names and codes as printed.",
+  "groups": [
+    { "code": "A", "name": "General Information", "sections": [["GI", "General Information"]] },
+    { "code": "B", "name": "Engine", "sections": [
+      ["EM", "Engine Mechanical"], ["LU", "Engine Lubrication System"], ["CO", "Engine Cooling System"],
+      ["EC", "Engine Control System"], ["FL", "Fuel System"], ["EX", "Exhaust System"],
+      ["STR", "Starting System"], ["ACC", "Accelerator Control System"] ] },
+    { "code": "D", "name": "Transmission & Driveline", "sections": [
+      ["TM", "Transaxle & Transmission"], ["DLN", "Driveline"], ["FAX", "Front Axle"], ["RAX", "Rear Axle"] ] },
+    { "code": "E", "name": "Suspension", "sections": [
+      ["FSU", "Front Suspension"], ["RSU", "Rear Suspension"], ["SCS", "Suspension Control System"], ["WT", "Road Wheels & Tires"] ] },
+    { "code": "F", "name": "Brakes", "sections": [
+      ["BR", "Brake System"], ["PB", "Parking Brake System"], ["BRC", "Brake Control System"] ] },
+    { "code": "G", "name": "Steering", "sections": [
+      ["ST", "Steering System"], ["STC", "Steering Control System"] ] },
+    { "code": "H", "name": "Restraints", "sections": [
+      ["SB", "Seat Belt"], ["SR", "SRS Airbag"], ["SRC", "SRS Airbag Control System"] ] },
+    { "code": "I", "name": "Ventilation, Heater & Air Conditioner", "sections": [
+      ["VTL", "Ventilation System"], ["HA", "Heater & Air Conditioning System"], ["HAC", "Heater & Air Conditioning Control System"] ] },
+    { "code": "J", "name": "Body Interior", "sections": [
+      ["INT", "Interior"], ["IP", "Instrument Panel"], ["SE", "Seat"] ] },
+    { "code": "K", "name": "Body Exterior, Door, Roof & Vehicle Security", "sections": [
+      ["DLK", "Door & Lock"], ["SEC", "Security Control System"], ["GW", "Glass & Window System"],
+      ["PWC", "Power Window Control System"], ["HD", "Hood"], ["EXT", "Exterior"], ["BRM", "Body Repair"] ] },
+    { "code": "L", "name": "Driver Controls", "sections": [
+      ["MIR", "Mirrors"], ["EXL", "Exterior Lighting System"], ["INL", "Interior Lighting System"],
+      ["WW", "Wiper & Washer"], ["DEF", "Defogger"], ["HRN", "Horn"] ] },
+    { "code": "M", "name": "Electrical & Power Control", "sections": [
+      ["PWO", "Power Outlet"], ["BCS", "Body Control System"], ["LAN", "LAN System"],
+      ["PCS", "Power Control System"], ["CHG", "Charging System"], ["PG", "Power Supply, Ground & Circuit Elements"] ] },
+    { "code": "N", "name": "Driver Information & Multimedia", "sections": [
+      ["MWI", "Meter, Warning Lamp & Indicator"], ["WCS", "Warning Chime System"], ["AV", "Audio, Visual & Navigation System"] ] },
+    { "code": "P", "name": "Maintenance", "sections": [["MA", "Maintenance"]] }
+  ],
+  "owner_groups": [
+    { "code": "Z", "name": "Other (owner-defined)", "active": true, "source": "owner", "legacy_note": "" }
+  ],
+  "legacy_groups": [
+    { "code": "C", "name": "Electrical Power Train", "active": false, "source": "owner",
+      "legacy_note": "From the spreadsheet; not in the R35 ESM index. Re-tag imported rows to an ESM group." },
+    { "code": "O", "name": "Cruise Control and Driver Assistance", "active": false, "source": "owner",
+      "legacy_note": "From the spreadsheet; not in the R35 ESM index. Cruise control (ASCD) is covered in EC Engine Control System." }
+  ]
+}

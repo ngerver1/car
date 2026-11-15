@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #d97706;
+  --color-accent-strong: #b45309;
+}
+
+:root {
+  --bg: #f4f4f5;
+  --surface: #ffffff;
+  --surface-2: #f4f4f5;
+  --border: #e4e4e7;
+  --text: #18181b;
+  --muted: #52525b;
+  --accent: #b45309;
+  --accent-fg: #ffffff;
+  --danger: #b91c1c;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0b0d;
+    --surface: #18181b;
+    --surface-2: #232327;
+    --border: #2e2e33;
+    --text: #f4f4f5;
+    --muted: #a1a1aa;
+    --accent: #f59e0b;
+    --accent-fg: #111827;
+    --danger: #f87171;
+    color-scheme: dark;
+  }
+}
+
+html, body, #root { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer components {
+  .card { background: var(--surface); border: 1px solid var(--border); @apply rounded-xl; }
+  .muted { color: var(--muted); }
+  .label { color: var(--muted); @apply block text-sm font-medium mb-1; }
+  .input {
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    @apply w-full rounded-lg px-3 min-h-11 text-base outline-none;
+  }
+  .input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 30%, transparent); }
+  textarea.input { @apply py-2 min-h-24; }
+  .input[aria-invalid="true"] { border-color: var(--danger); }
+  .error { color: var(--danger); @apply text-sm mt-1; }
+  .btn {
+    background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 min-h-11 text-sm font-semibold whitespace-nowrap;
+  }
+  .btn:disabled { @apply opacity-50; }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+  .btn-danger { color: var(--danger); }
+  .btn-ghost { background: transparent; border-color: transparent; }
+  .chip {
+    background: var(--surface-2); border: 1px solid var(--border);
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium whitespace-nowrap;
+  }
+  .toggle {
+    background: var(--surface); border: 1px solid var(--border);
+    @apply inline-flex items-center justify-center rounded-lg min-w-11 min-h-11 px-3 text-sm font-medium;
+  }
+  .toggle[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+  .section-title { color: var(--muted); @apply text-xs font-semibold uppercase tracking-wide; }
+}

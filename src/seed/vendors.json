@@ -1,0 +1,7 @@
+[
+  { "name": "Private Corner", "kind": "Workshop", "review_flag": "", "notes": "From Maintenance_Log.xlsx (Technician column). Kind is a guess — confirm." },
+  { "name": "Pit Station", "kind": "Workshop", "review_flag": "", "notes": "From Maintenance_Log.xlsx (Technician column). Kind is a guess — confirm." },
+  { "name": "Jacks Trans", "kind": "Workshop", "review_flag": "", "notes": "From Maintenance_Log.xlsx (Technician column). Kind is a guess — confirm." },
+  { "name": "JustJap", "kind": "Supplier", "review_flag": "", "notes": "From Maintenance_Log.xlsx (Technician column). Kind is a guess — confirm." },
+  { "name": "Circlip Order", "kind": "Supplier", "review_flag": "Looks like an order description rather than a vendor (entry #29). Proposed: merge into the Linney circlips part line.", "notes": "From Maintenance_Log.xlsx (Technician column)." }
+]

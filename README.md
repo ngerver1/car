@@ -2,19 +2,19 @@
 
 An offline-first web app (installable PWA) for one car, a 2008 JDM Nissan GT-R (CBA-R35). It logs defects and their troubleshooting steps, servicing, fitted parts and photos. It replaces `Maintenance_Log.xlsx`.
 
-Everything is stored on the device in IndexedDB. The app works the same with or without a connection. Cloud sync (Supabase) comes in milestone 7.
+Everything is stored on the device in IndexedDB. The app works the same with or without a connection. Sync to a private GitHub repo comes in milestone 7.
 
 ## Status
 
 | Milestone | State |
 | --- | --- |
-| 1. Skeleton and local data | ✅ Done |
+| 1. Skeleton, local data and hosting | ✅ Done (GitHub Pages workflow added) |
 | 2. Defects and steps | ✅ Done |
 | 3. Photos | ✅ Done |
 | 4. Service schedule and dashboard | Next. Service items are seeded and shown read-only |
 | 5. Parts register | Parts on order view done. Installed register to come |
 | 6. Shortlist and exports | — |
-| 7. Backend and sync | — (outbox is already filled on every write) |
+| 7. GitHub sync to private `car-data` | — (outbox is already filled on every write) |
 | 8. Spreadsheet import | — |
 | 9. Backup and polish | Dark mode follows the system setting already |
 
@@ -49,20 +49,20 @@ tests/e2e/    Playwright, with fixtures in tests/fixtures
 
 - Every write goes through `src/db/repo.ts`. It validates with zod, increments `version`, sets `updated_by_device`, and appends an `outbox` entry in the same IndexedDB transaction. Deletes are soft deletes (`deleted = true`).
 - Ids are UUID v7, made on the device. Seed rows use fixed UUID v5 ids, so every device seeds identical rows.
-- The issue `ref_no` is a number. The display ref (D-0009 / J-0010) takes its prefix from the kind. New refs come from this device's block (1000–1999 for device 1). The sync server will assign blocks in milestone 7. Imported rows keep their sheet numbers (2–67).
+- The issue `ref_no` is a number. The display ref (D-0009 / J-0010) takes its prefix from the kind. New refs come from this device's block (1000–1999 for device 1). From milestone 7 a device claims its block in `car-data/devices.json`. Imported rows keep their sheet numbers (2–67).
 - Costs are never added up across currencies.
 - Photos are resized on the device to a 2,048 px long edge (JPEG, quality 0.8). The full image is kept in `photo_blobs`, and a 320 px thumbnail is stored on the photo record. Re-encoding through a canvas drops EXIF, including GPS.
 - Form drafts are kept in `localStorage` as you type.
 
-## Deploy (Cloudflare Pages)
+## Deploy (GitHub Pages)
 
-Any static host with HTTPS works. On Cloudflare Pages:
+The full build spec is [docs/SPEC.md](docs/SPEC.md) (revision 2: GitHub Pages hosting, sync to a private GitHub repo).
 
-1. Create a Pages project connected to this repo.
-2. Build command `npm run build`, output directory `dist`.
-3. Add a SPA fallback: Pages serves `index.html` for unknown paths by default. The service worker also handles deep links offline.
+`.github/workflows/deploy.yml` runs the unit tests, builds with `BASE_PATH=/car/`, copies `index.html` to `404.html` for deep links, and publishes to **https://ngerver1.github.io/car/** on every push.
 
-Supabase environment variables (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`) arrive with milestone 7.
+One-time setup: repo **Settings → Pages → Source: GitHub Actions**. If the first run failed because Pages wasn't switched on yet, re-run it from the Actions tab.
+
+Sync (milestone 7) goes to a separate **private** repo, `ngerver1/car-data`. This repo is public, so it must never contain records, photos, the spreadsheet or the ESM.
 
 ## Decisions and spec notes
 

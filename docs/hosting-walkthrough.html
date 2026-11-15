@@ -96,100 +96,65 @@ footer { color: var(--muted); font-size: 14px; }
   <header>
     <span class="eyebrow">R35 Log · putting the app online</span>
     <h1>Get the app onto your phone</h1>
-    <p class="lede">You'll give the app a free web address with Cloudflare Pages. Cloudflare copies the code from your GitHub repo, builds it, and hosts it. After that you open the address on your phone once and add it to your home screen.</p>
+    <p class="lede">The app is hosted free by GitHub Pages, straight from your <code>ngerver1/car</code> repo. I've already added the workflow that builds and publishes it. You switch Pages on once, then add the app to your phone's home screen.</p>
     <div class="meta">
-      <span class="pill">About 10–15 minutes</span>
+      <span class="pill">About 5–10 minutes</span>
       <span class="pill">Free</span>
-      <span class="pill">Do it on your computer</span>
+      <span class="pill">Only your GitHub account</span>
     </div>
     <div class="progress" aria-live="polite">
       <div class="bar" aria-hidden="true"><span id="barFill"></span></div>
-      <span id="progressText">0 of 6 done</span>
+      <span id="progressText">0 of 4 done</span>
     </div>
   </header>
 
   <div class="note">
-    <strong>Your data stays private.</strong> The web address only serves the app itself. Your defects, photos and costs are saved on each device, and nobody who visits the address can see them.
+    <strong>Your data stays private.</strong> The <code>car</code> repo and the web address only hold the app's code. Your defects, photos and costs stay on each device for now. From milestone 7 they'll sync to a separate <em>private</em> repo, <code>car-data</code>, which you'll set up then.
   </div>
 
   <ol class="steps" id="steps">
     <li class="step" data-step="1">
       <button class="num" type="button" aria-label="Toggle step 1 done">1</button>
-      <h2>Create a free Cloudflare account</h2>
+      <h2>Switch on GitHub Pages</h2>
       <div class="body">
-        <p>Go to <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noreferrer">dash.cloudflare.com/sign-up</a> and sign up with your email. Confirm the email they send you.</p>
-        <p class="why">If Cloudflare asks you to add a website or domain, skip it. You don't need a domain; Cloudflare gives you a free <code>.pages.dev</code> address.</p>
+        <ul>
+          <li>Open <a href="https://github.com/ngerver1/car/settings/pages" target="_blank" rel="noreferrer">github.com/ngerver1/car/settings/pages</a> (or the repo's <span class="ui">Settings</span> tab, then <span class="ui">Pages</span> in the left menu).</li>
+          <li>Under <span class="ui">Build and deployment</span>, set <span class="ui">Source</span> to <span class="ui">GitHub Actions</span>.</li>
+        </ul>
+        <p class="why">That's the whole setting; there's no Save button. It tells GitHub to publish whatever the repo's deploy workflow builds.</p>
         <button class="mark" type="button">Mark done</button>
       </div>
     </li>
 
     <li class="step" data-step="2">
       <button class="num" type="button" aria-label="Toggle step 2 done">2</button>
-      <h2>Start a new Pages project</h2>
+      <h2>Run the deploy</h2>
       <div class="body">
         <ul>
-          <li>In the left menu open <span class="ui">Workers &amp; Pages</span> (it may sit under <span class="ui">Compute</span>).</li>
-          <li>Click <span class="ui">Create</span> (or <span class="ui">Create application</span>).</li>
-          <li>Choose the <span class="ui">Pages</span> tab. If you only see Workers options, look for a link like <span class="ui">Looking to deploy Pages? Get started</span>.</li>
-          <li>Pick <span class="ui">Import an existing Git repository</span> (sometimes labelled <span class="ui">Connect to Git</span>).</li>
+          <li>Open the <a href="https://github.com/ngerver1/car/actions/workflows/deploy.yml" target="_blank" rel="noreferrer">Deploy to GitHub Pages</a> workflow in the repo's <span class="ui">Actions</span> tab.</li>
+          <li>Click <span class="ui">Run workflow</span>, keep the branch shown, and click the green <span class="ui">Run workflow</span> button.</li>
+          <li>Wait about 2 minutes for the run to show a green tick.</li>
         </ul>
-        <p class="why">Cloudflare changes these labels from time to time. The idea is the same: make a <strong>Pages</strong> project that connects to Git, not a Worker.</p>
+        <p class="why">A run probably already happened when I pushed, before Pages was switched on, so it will show a red cross. That's expected; this new run replaces it. From now on every push I make deploys on its own.</p>
         <button class="mark" type="button">Mark done</button>
       </div>
     </li>
 
     <li class="step" data-step="3">
       <button class="num" type="button" aria-label="Toggle step 3 done">3</button>
-      <h2>Connect GitHub and choose the repo</h2>
+      <h2>Open the app on your computer</h2>
       <div class="body">
-        <ul>
-          <li>Click <span class="ui">Connect GitHub</span>. A GitHub window opens.</li>
-          <li>Choose <span class="ui">Only select repositories</span>, pick <code>ngerver1/car</code>, then <span class="ui">Install &amp; Authorize</span>.</li>
-          <li>Back in Cloudflare, select <code>car</code> and click <span class="ui">Begin setup</span>.</li>
-        </ul>
-        <p class="why">Giving access to just this one repo keeps Cloudflare away from anything else in your GitHub account.</p>
+        <div class="plates">
+          <div class="plate"><span class="k">Your app's address</span><code>https://ngerver1.github.io/car/</code><button class="copy" type="button" data-copy="https://ngerver1.github.io/car/">Copy</button></div>
+        </div>
+        <p>Open <a href="https://ngerver1.github.io/car/" target="_blank" rel="noreferrer">ngerver1.github.io/car</a>. You should see the dashboard with <strong>74,689 km</strong> on the odometer tile.</p>
+        <p class="why">If GitHub shows a 404 page, wait a minute and reload. The first publish can take a moment to appear.</p>
         <button class="mark" type="button">Mark done</button>
       </div>
     </li>
 
     <li class="step" data-step="4">
       <button class="num" type="button" aria-label="Toggle step 4 done">4</button>
-      <h2>Fill in the build settings</h2>
-      <div class="body">
-        <p>Enter these exactly. Use the copy buttons to avoid typos.</p>
-        <div class="plates">
-          <div class="plate"><span class="k">Project name</span><code>r35-log</code><button class="copy" type="button" data-copy="r35-log">Copy</button></div>
-          <div class="plate"><span class="k">Production branch</span><code>claude/nice-goldberg-sxfr33</code><button class="copy" type="button" data-copy="claude/nice-goldberg-sxfr33">Copy</button></div>
-          <div class="plate"><span class="k">Framework preset</span><code>None</code><span></span></div>
-          <div class="plate"><span class="k">Build command</span><code>npm run build</code><button class="copy" type="button" data-copy="npm run build">Copy</button></div>
-          <div class="plate"><span class="k">Build output directory</span><code>dist</code><button class="copy" type="button" data-copy="dist">Copy</button></div>
-        </div>
-        <p>Then open <span class="ui">Environment variables (advanced)</span> and add one variable:</p>
-        <div class="plates">
-          <div class="plate"><span class="k">Variable name</span><code>NODE_VERSION</code><button class="copy" type="button" data-copy="NODE_VERSION">Copy</button></div>
-          <div class="plate"><span class="k">Value</span><code>22</code><button class="copy" type="button" data-copy="22">Copy</button></div>
-        </div>
-        <p class="why">The production branch is the branch where the app's code lives right now. The Node version makes Cloudflare build with the same tools the app was tested with. Leave the root directory blank.</p>
-        <button class="mark" type="button">Mark done</button>
-      </div>
-    </li>
-
-    <li class="step" data-step="5">
-      <button class="num" type="button" aria-label="Toggle step 5 done">5</button>
-      <h2>Deploy and open the address</h2>
-      <div class="body">
-        <ul>
-          <li>Click <span class="ui">Save and Deploy</span>. The build log runs for a minute or two and should end with <span class="ui">Success</span>.</li>
-          <li>Your address is shown at the top, something like <code>https://r35-log.pages.dev</code>. If that name was taken, Cloudflare adds a few extra letters.</li>
-          <li>Open the address on your computer. You should see the dashboard with <strong>74,689 km</strong> on the odometer tile.</li>
-        </ul>
-        <p class="why">From now on, each time I push new work to this branch, Cloudflare rebuilds the app on its own. The app on your phone updates the next time you open it with signal.</p>
-        <button class="mark" type="button">Mark done</button>
-      </div>
-    </li>
-
-    <li class="step" data-step="6">
-      <button class="num" type="button" aria-label="Toggle step 6 done">6</button>
       <h2>Add it to your phone's home screen</h2>
       <div class="body">
         <p>Open the same address on your phone, wait a few seconds for it to load fully, then:</p>
@@ -212,7 +177,7 @@ footer { color: var(--muted); font-size: 14px; }
           </div>
         </div>
         <p>To check it works offline: open the app from the home-screen icon once, switch on airplane mode, close it, and open it again.</p>
-        <p class="why">On iPhone, always open the app from the home-screen icon rather than a Safari tab. iOS keeps the app's saved data more reliably that way.</p>
+        <p class="why">On iPhone, always open the app from the home-screen icon rather than a Safari tab. iOS keeps the app's saved data more reliably that way. Until sync arrives, each device keeps its own records, so pick one device for real entries for now.</p>
         <button class="mark" type="button">Mark done</button>
       </div>
     </li>
@@ -221,16 +186,16 @@ footer { color: var(--muted); font-size: 14px; }
   <section class="trouble" aria-labelledby="trouble-h">
     <h2 id="trouble-h">If something goes wrong</h2>
     <details>
-      <summary>I can't find the Pages option</summary>
-      <p>Cloudflare has been merging Pages into Workers, so the menu moves around. Search the dashboard for "Pages", or tell me what you see on screen and I'll point you to the right button.</p>
+      <summary>There's no Run workflow button</summary>
+      <p>Reload the Actions page. If it's still missing, open the latest red run and click <span class="ui">Re-run all jobs</span> instead.</p>
     </details>
     <details>
-      <summary>My repo isn't in the list</summary>
-      <p>The GitHub connection only covers the repos you picked. In GitHub go to Settings → Applications → Cloudflare Workers and Pages → Configure, and add <code>ngerver1/car</code>.</p>
+      <summary>The deploy step says the branch isn't allowed</summary>
+      <p>Go to <span class="ui">Settings → Environments → github-pages</span>. Under <span class="ui">Deployment branches and tags</span>, add <code>claude/nice-goldberg-sxfr33</code> (or choose No restriction), then re-run the workflow.</p>
     </details>
     <details>
-      <summary>The build failed</summary>
-      <p>Open the build log, copy the last 20 or so lines, and paste them to me. The usual cause is a mistyped build command or output directory, or the missing NODE_VERSION variable.</p>
+      <summary>The run failed on "npm test" or "npm run build"</summary>
+      <p>Open the failed step, copy the last 20 or so lines, and paste them to me.</p>
     </details>
     <details>
       <summary>The page is blank or shows an old version</summary>
@@ -238,12 +203,12 @@ footer { color: var(--muted); font-size: 14px; }
     </details>
   </section>
 
-  <footer>When you're done, send me the address Cloudflare gave you. I'll check it's serving the latest build and then start milestone 4 (service schedule and due list).</footer>
+  <footer>When the app opens at ngerver1.github.io/car, tell me and I'll start milestone 4 (service schedule and due list). The private <code>car-data</code> repo and its access token come later, at milestone 7.</footer>
 </div>
 
 <script>
 (function () {
-  var KEY = 'r35-hosting-steps';
+  var KEY = 'r35-hosting-steps-ghpages';
   var done = {};
   try { done = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { done = {}; }
   var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
@@ -260,7 +225,7 @@ footer { color: var(--muted); font-size: 14px; }
       li.querySelector('.num').textContent = on ? '✓' : id;
     });
     document.getElementById('barFill').style.width = (n / steps.length * 100) + '%';
-    document.getElementById('progressText').textContent = n === steps.length ? 'All 6 done' : n + ' of 6 done';
+    document.getElementById('progressText').textContent = n === steps.length ? 'All ' + steps.length + ' done' : n + ' of ' + steps.length + ' done';
   }
   function toggle(id) {
     done[id] = !done[id];

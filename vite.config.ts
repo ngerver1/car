@@ -6,7 +6,11 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { fileURLToPath } from 'node:url';
 
 // `vite build --mode artifact` makes a one-file preview (no service worker) for claude.ai.
+// BASE_PATH is set to /car/ by the GitHub Pages workflow; local dev and tests use /.
+const base = process.env.BASE_PATH ?? '/';
+
 export default defineConfig(({ mode }) => ({
+  base,
   resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
   plugins: [
     react(),
@@ -24,8 +28,8 @@ export default defineConfig(({ mode }) => ({
         background_color: '#111827',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
-        scope: '/',
+        start_url: base,
+        scope: base,
         icons: [
           { src: 'pwa-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'pwa-512.png', sizes: '512x512', type: 'image/png' },
@@ -34,7 +38,8 @@ export default defineConfig(({ mode }) => ({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,webmanifest}'],
-        navigateFallback: '/index.html',
+        // Relative to the service worker, so it works under any base path.
+        navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
       },
     }),

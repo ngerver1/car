@@ -20,7 +20,7 @@ const Router = import.meta.env.MODE === 'artifact' ? MemoryRouter : BrowserRoute
 
 export function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.MODE === 'artifact' ? undefined : import.meta.env.BASE_URL.replace(/\/$/, '') || undefined}>
       <ConfirmProvider>
         <Routes>
           <Route element={<Layout />}>

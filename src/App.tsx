@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom';
 import { ConfirmProvider } from '@/ui/dialog';
 import { Layout } from '@/ui/Layout';
 import { Dashboard } from '@/features/dashboard/Dashboard';
@@ -15,9 +15,12 @@ import { GroupsSettings } from '@/features/more/GroupsSettings';
 import { GeneralSettings } from '@/features/more/GeneralSettings';
 import { SyncLog } from '@/features/more/SyncLog';
 
+// The claude.ai preview can't use real URL paths, so it keeps the route in memory.
+const Router = import.meta.env.MODE === 'artifact' ? MemoryRouter : BrowserRouter;
+
 export function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <ConfirmProvider>
         <Routes>
           <Route element={<Layout />}>
@@ -40,6 +43,6 @@ export function App() {
           </Route>
         </Routes>
       </ConfirmProvider>
-    </BrowserRouter>
+    </Router>
   );
 }

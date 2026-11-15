@@ -5,11 +5,13 @@ import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import { fileURLToPath } from 'node:url';
 
-export default defineConfig({
+// `vite build --mode artifact` makes a one-file preview (no service worker) for claude.ai.
+export default defineConfig(({ mode }) => ({
   resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
   plugins: [
     react(),
     tailwindcss(),
+    mode !== 'artifact' &&
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
@@ -37,9 +39,13 @@ export default defineConfig({
       },
     }),
   ],
+  ...(mode === 'artifact' && {
+    base: './',
+    build: { outDir: 'dist-artifact', assetsInlineLimit: 100_000_000, cssCodeSplit: false, rollupOptions: { output: { inlineDynamicImports: true } } },
+  }),
   test: {
     include: ['tests/unit/**/*.test.ts'],
     environment: 'node',
     setupFiles: ['tests/unit/setup.ts'],
   },
-});
+}));
